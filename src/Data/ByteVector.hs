@@ -9,17 +9,17 @@ module Data.ByteVector
     ) where
 
 import           Control.Monad.Primitive     (unsafePrimToPrim)
+import qualified Data.ByteString             as S
 import           Data.ByteString.Internal    (mallocByteString)
-import qualified Data.Vector.Generic as VG
-import qualified          Data.Vector.Generic.Mutable as VGM
+import           Data.ByteString.Internal    (ByteString (PS))
+import qualified Data.ByteString.Unsafe      as BU
+import qualified Data.Vector.Generic         as VG
+import qualified Data.Vector.Generic.Mutable as VGM
 import           Data.Word8                  (Word8)
 import           Foreign.ForeignPtr          (ForeignPtr)
 import           Foreign.ForeignPtr.Unsafe   (unsafeForeignPtrToPtr)
 import           Foreign.Ptr                 (Ptr)
 import           Foreign.Storable            (peekByteOff, pokeByteOff)
-import qualified Data.ByteString as S
-import Data.ByteString.Internal (ByteString (PS))
-import qualified Data.ByteString.Unsafe as BU
 
 data MByteVector s a = MByteVector
     { mbsFptr   :: !(ForeignPtr Word8)

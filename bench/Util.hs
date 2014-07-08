@@ -3,7 +3,6 @@ module Util where
 import qualified System.Random.MWC as MWC
 import Data.ByteVector (fromByteVector)
 import System.IO.Temp (withSystemTempFile)
-import Control.Monad.IO.Class (liftIO)
 import Data.ByteString.Lazy.Internal (defaultChunkSize)
 import System.IO (hClose)
 import Conduit
@@ -22,10 +21,15 @@ withRandomFile f = withSystemTempFile "random-file.bin" $ \fp h -> do
         hClose h
     f fp
 
+timed :: MonadIO m => m a -> m a
 timed f = do
-    start <- liftIO getCurrentTime
-    putStrLn $ "Start: " ++ show start
-    f
-    end <- liftIO getCurrentTime
-    putStrLn $ "End  : " ++ show end
-    print $ diffUTCTime end start
+    start <- liftIO $ do
+        start <- getCurrentTime
+        putStrLn $ "Start: " ++ show start
+        return start
+    res <- f
+    liftIO $ do
+        end <- getCurrentTime
+        putStrLn $ "End  : " ++ show end
+        print $ diffUTCTime end start
+    return res

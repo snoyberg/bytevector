@@ -1,16 +1,16 @@
 module Main where
 
-import Util
-import qualified Data.ByteString as S
-import Data.ByteString.Lazy.Internal (defaultChunkSize)
-import qualified System.IO as IO
-import System.IO.Temp
-import Data.ByteVector
-import qualified Data.Vector.Generic.Mutable as V
-import Data.Vector.Generic (unsafeFreeze)
-import Data.MonoTraversable (ofoldlM)
-import GHC.Prim (RealWorld)
-import Data.Word (Word8)
+import qualified Data.ByteString               as S
+import           Data.ByteString.Lazy.Internal (defaultChunkSize)
+import           Data.ByteVector
+import           Data.MonoTraversable          (ofoldlM)
+import           Data.Vector.Generic           (unsafeFreeze)
+import qualified Data.Vector.Generic.Mutable   as V
+import           Data.Word                     (Word8)
+import           GHC.Prim                      (RealWorld)
+import qualified System.IO                     as IO
+import           System.IO.Temp
+import           Util
 
 main :: IO ()
 main =
