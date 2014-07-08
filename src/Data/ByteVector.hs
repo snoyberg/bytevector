@@ -15,7 +15,7 @@ import           Data.ByteString.Internal    (ByteString (PS))
 import qualified Data.ByteString.Unsafe      as BU
 import qualified Data.Vector.Generic         as VG
 import qualified Data.Vector.Generic.Mutable as VGM
-import           Data.Word8                  (Word8)
+import           Data.Word                   (Word8)
 import           Foreign.ForeignPtr          (ForeignPtr)
 import           Foreign.ForeignPtr.Unsafe   (unsafeForeignPtrToPtr)
 import           Foreign.Ptr                 (Ptr)

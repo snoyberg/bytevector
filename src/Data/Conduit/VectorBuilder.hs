@@ -39,7 +39,7 @@ vectorBuilder size inner = do
 
 data S s v e = S
     {-# UNPACK #-} !Int -- ^ index
-    {-# UNPACK #-} !(Mutable v s e)
+    !(Mutable v s e)
     ([v e] -> [v e])
 
 onAwait :: Monad m => ConduitM i o m () -> ConduitM i o m r -> ConduitM i o m r
