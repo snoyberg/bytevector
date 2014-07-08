@@ -15,9 +15,9 @@ import           Data.Vector.Generic         (Mutable, Vector, unsafeFreeze,
                                               unsafeTake)
 import qualified Data.Vector.Generic.Mutable as V
 
-vectorBuilder :: (PrimMonad base, MonadBase base m, Vector v e)
+vectorBuilder :: (PrimMonad base, MonadBase base m, Vector v e, MonadBase base n)
               => Int -- ^ size
-              -> ((e -> m ()) -> ConduitM i (v e) m r)
+              -> ((e -> n ()) -> ConduitM i (v e) m r)
               -> ConduitM i (v e) m r
 vectorBuilder size inner = do
     ref <- liftBase $ do

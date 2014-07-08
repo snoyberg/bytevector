@@ -1,9 +1,10 @@
-import Criterion.Main
 import           Conduit
 import           Control.Monad                 (unless)
+import           Control.Monad                 (when)
 import           Control.Monad.Catch           (MonadMask)
 import qualified Copy.Conduit
 import qualified Copy.Raw
+import           Criterion.Main
 import qualified Data.ByteString               as S
 import           Data.ByteString.Lazy.Internal (defaultChunkSize)
 import           Data.ByteVector               (fromByteVector)
@@ -11,7 +12,6 @@ import           System.IO                     (Handle, hClose)
 import qualified System.IO                     as IO
 import           System.IO.Temp                (withSystemTempFile)
 import qualified System.Random.MWC             as MWC
-import Control.Monad (when)
 
 runTest :: FilePath -- ^ source file
         -> String
