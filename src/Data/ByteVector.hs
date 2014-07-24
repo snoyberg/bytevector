@@ -22,7 +22,7 @@ import           Foreign.Ptr                 (Ptr)
 import           Foreign.Storable            (peekByteOff, pokeByteOff)
 
 data MByteVector s a = MByteVector
-    { mbsFptr   :: !(ForeignPtr Word8)
+    { mbsFptr   :: {-# UNPACK #-} !(ForeignPtr Word8)
     , mbsOffset :: {-# UNPACK #-} !Int
     , mbsLen    :: {-# UNPACK #-} !Int
     }
