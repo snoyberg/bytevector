@@ -3,6 +3,7 @@ import           Control.Monad                 (unless)
 import           Control.Monad                 (when)
 import           Control.Monad.Catch           (MonadMask)
 import qualified Copy.Conduit
+import qualified Copy.StorableConduit
 import qualified Copy.PeekPoke
 import qualified Copy.Raw
 import           Criterion.Main
@@ -37,6 +38,7 @@ main = withRandomFile $ \input -> defaultMain
     [ runTest input "Raw" Copy.Raw.run
     , runTest input "PeekPoke" Copy.PeekPoke.run
     , runTest input "conduit" Copy.Conduit.run
+    , runTest input "storable conduit" Copy.StorableConduit.run
     ]
 
 withRandomFile :: (MonadIO m, MonadMask m) => (FilePath -> m a) -> m a

@@ -27,6 +27,7 @@ benchmark copy-file
     hs-source-dirs: bench
     other-modules:  Copy
                     Copy.Conduit
+                    Copy.StorableConduit
                     Copy.PeekPoke
                     Copy.Raw
     build-depends:  base
