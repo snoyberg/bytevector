@@ -7,7 +7,7 @@ import           Conduit
 import qualified Data.ByteString               as S
 import           Data.ByteString.Lazy.Internal (defaultChunkSize)
 import           Data.ByteVector               (fromByteVector)
-import           Data.Conduit.VectorBuilder    (vectorBuilder)
+import           Data.Conduit.Combinators      (vectorBuilder)
 import           System.IO                     (Handle)
 
 run :: Handle -> Handle -> IO ()

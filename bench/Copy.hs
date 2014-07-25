@@ -3,6 +3,7 @@ import           Control.Monad                 (unless)
 import           Control.Monad                 (when)
 import           Control.Monad.Catch           (MonadMask)
 import qualified Copy.Conduit
+import qualified Copy.PeekPoke
 import qualified Copy.Raw
 import           Criterion.Main
 import qualified Data.ByteString               as S
@@ -34,6 +35,7 @@ testOutput = False
 main :: IO ()
 main = withRandomFile $ \input -> defaultMain
     [ runTest input "Raw" Copy.Raw.run
+    , runTest input "PeekPoke" Copy.PeekPoke.run
     , runTest input "conduit" Copy.Conduit.run
     ]
 
